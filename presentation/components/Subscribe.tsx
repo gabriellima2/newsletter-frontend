@@ -12,7 +12,6 @@ export const Subscribe = () => {
 		e.preventDefault();
 		try {
 			const response = await subscribe.execute({ email });
-			console.log(response);
 		} catch (err) {
 			console.error(err);
 		}

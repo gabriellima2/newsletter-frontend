@@ -15,6 +15,10 @@ export class SubscribeImpl implements ISubscribe {
 		return await this.httpClient.execute<string, UserEntity>({
 			url: this.url,
 			method: "post",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
 			body: JSON.stringify(params),
 		});
 	}
