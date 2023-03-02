@@ -1,6 +1,5 @@
 import { SubscribeParams, UserEntity } from "@/domain/entities/user-entity";
-import { IHttpClient } from "@/domain/http/http-client";
-import { HttpResponseProtocol } from "@/domain/http/http-protocols/http-response-protocol";
+import { IHttpClient, HttpResponseProtocol } from "@/domain/http";
 import { ISubscribe } from "../subscribe";
 
 export class SubscribeImpl implements ISubscribe {

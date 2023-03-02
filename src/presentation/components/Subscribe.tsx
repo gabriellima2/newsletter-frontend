@@ -1,8 +1,7 @@
 "use client";
+import { FormEvent, useState } from "react";
 
 import { makeSubscribe } from "@/main/factories/use-cases/make-subscribe";
-
-import { FormEvent, useState } from "react";
 
 export const Subscribe = () => {
 	const subscribe = makeSubscribe();

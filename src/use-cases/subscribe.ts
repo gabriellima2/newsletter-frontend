@@ -1,5 +1,5 @@
 import { SubscribeParams, UserEntity } from "@/domain/entities/user-entity";
-import { HttpResponseProtocol } from "@/domain/http/http-protocols/http-response-protocol";
+import { HttpResponseProtocol } from "@/domain/http";
 
 export type ISubscribeExecute = (
 	data: SubscribeParams

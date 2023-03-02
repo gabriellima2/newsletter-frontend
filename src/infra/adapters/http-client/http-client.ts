@@ -1,6 +1,8 @@
-import { IHttpClient } from "@/domain/http/http-client";
-import { HttpRequestProtocol } from "@/domain/http/http-protocols/http-request-protocol";
-import { HttpResponseProtocol } from "@/domain/http/http-protocols/http-response-protocol";
+import {
+	IHttpClient,
+	type HttpRequestProtocol,
+	type HttpResponseProtocol,
+} from "@/domain/http";
 
 export class HttpClient implements IHttpClient {
 	async execute<ReqBody, ResBody>(
