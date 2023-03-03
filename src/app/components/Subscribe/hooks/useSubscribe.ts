@@ -1,8 +1,8 @@
-import { ISubscribe } from "@/use-cases/subscribe";
+import { Subscribe } from "@/use-cases/subscribe";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 type UseSubscribeParams = {
-	subscribe: ISubscribe;
+	subscribe: Subscribe;
 };
 
 export function useSubscribe(params: UseSubscribeParams) {

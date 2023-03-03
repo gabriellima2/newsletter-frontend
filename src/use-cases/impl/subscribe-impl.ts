@@ -1,8 +1,8 @@
 import { IHttpClient, HttpClientResponse } from "@/domain/http";
 import { SubscribeParams, UserEntity } from "@/domain/entities";
-import { ISubscribe } from "../subscribe";
+import { Subscribe } from "../subscribe";
 
-export class SubscribeImpl implements ISubscribe {
+export class SubscribeImpl implements Subscribe {
 	constructor(
 		private readonly url: string,
 		private readonly httpClient: IHttpClient
