@@ -1,8 +1,12 @@
-import { Inter } from "next/font/google";
 import { Subscribe } from "@/app/components/Subscribe";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globalStyles.css";
 
 export default function Home() {
-	return <Subscribe />;
+	return (
+		<div>
+			<h1>Hello</h1>
+			<Subscribe />
+		</div>
+	);
 }
