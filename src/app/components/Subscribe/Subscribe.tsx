@@ -1,4 +1,3 @@
-"use client";
 import { FormEvent, useState } from "react";
 
 import { makeSubscribe } from "@/main/factories/use-cases/make-subscribe";
