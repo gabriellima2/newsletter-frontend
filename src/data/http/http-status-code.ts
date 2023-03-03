@@ -7,8 +7,3 @@ export enum HttpStatusCode {
 	notFound = 404,
 	serverError = 500,
 }
-
-export interface HttpResponseProtocol<Body> {
-	statusCode: HttpStatusCode;
-	body: Body;
-}

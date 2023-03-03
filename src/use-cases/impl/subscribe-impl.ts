@@ -1,5 +1,5 @@
-import { SubscribeParams, UserEntity } from "@/domain/entities/user-entity";
-import { IHttpClient, HttpResponseProtocol } from "@/domain/http";
+import { IHttpClient, HttpClientResponse } from "@/domain/http";
+import { SubscribeParams, UserEntity } from "@/domain/entities";
 import { ISubscribe } from "../subscribe";
 
 export class SubscribeImpl implements ISubscribe {
@@ -10,8 +10,8 @@ export class SubscribeImpl implements ISubscribe {
 
 	async execute(
 		params: SubscribeParams
-	): Promise<HttpResponseProtocol<UserEntity>> {
-		return await this.httpClient.execute<string, UserEntity>({
+	): Promise<HttpClientResponse<UserEntity>> {
+		return await this.httpClient.execute({
 			url: this.url,
 			method: "post",
 			headers: {
