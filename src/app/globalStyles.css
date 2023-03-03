@@ -1,3 +1,9 @@
+:root {
+	--main-font-color: #f2f2f2;
+	--accent-color: #f2f2f2;
+	--background-color: #0a0a0a;
+}
+
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -5,5 +11,9 @@
 }
 
 body {
+	height: 100vh;
+	color: var(--main-font-color);
 	font-family: var(--main-font);
+	background-color: var(--background-color);
+
 }

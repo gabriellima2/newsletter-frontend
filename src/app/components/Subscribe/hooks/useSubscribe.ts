@@ -8,6 +8,11 @@ type UseSubscribeParams = {
 export function useSubscribe(params: UseSubscribeParams) {
 	const { subscribe } = params;
 	const [email, setEmail] = useState("");
+	const [userHasAcceptedSendingEmails, setUserHasAcceptedSendingEmails] =
+		useState(false);
+
+	const handleSendingEmailsChange = () =>
+		setUserHasAcceptedSendingEmails((prevState) => !prevState);
 
 	const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) =>
 		setEmail(e.target.value);
@@ -23,7 +28,9 @@ export function useSubscribe(params: UseSubscribeParams) {
 
 	return {
 		email,
+		userHasAcceptedSendingEmails,
 		handleEmailChange,
+		handleSendingEmailsChange,
 		handleSubmit,
 	};
 }
