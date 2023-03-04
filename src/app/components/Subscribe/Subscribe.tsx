@@ -1,6 +1,6 @@
 import { useSubscribe } from "./hooks/useSubscribe";
 import { makeSubscribe } from "@/main/factories/use-cases/make-subscribe";
-import { BaseField } from "../BaseField";
+import { BaseField } from "../BaseField/";
 import { BaseButton } from "../BaseButton";
 import { Checkbox } from "../Checkbox";
 
@@ -23,6 +23,7 @@ export const Subscribe = () => {
 					placeholder="Digite seu melhor email"
 					value={email}
 					onChange={handleEmailChange}
+					labelText="Email *"
 					errorMessage={null}
 				/>
 				<Checkbox

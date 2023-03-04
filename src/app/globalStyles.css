@@ -2,6 +2,8 @@
 	--main-font-color: #f2f2f2;
 	--accent-color: #f2f2f2;
 	--background-color: #0a0a0a;
+	--input-background-color: #111111ab;
+	--input-border-color: #ffffff1a;
 }
 
 * {
@@ -16,4 +18,13 @@ body {
 	font-family: var(--main-font);
 	padding: 0px 16px;
 	background-color: var(--background-color);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	border: 1px solid var(--input-border-color) !important;
+	-webkit-text-fill-color: var(--main-font-color) !important;
+	-webkit-box-shadow: 0 0 0 30px #111111 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
