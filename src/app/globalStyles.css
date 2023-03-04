@@ -14,6 +14,6 @@ body {
 	height: 100vh;
 	color: var(--main-font-color);
 	font-family: var(--main-font);
+	padding: 0px 16px;
 	background-color: var(--background-color);
-
 }
