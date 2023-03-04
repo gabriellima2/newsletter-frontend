@@ -1,13 +1,32 @@
-import { Subscribe } from "@/use-cases/subscribe";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
+
+import type { SubscribeParams } from "@/domain/entities";
+import type { IDefaultError } from "@/domain/errors";
+import type { Subscribe } from "@/use-cases/subscribe";
+
+type Email = {
+	value: string;
+	errorMessage: string | null;
+};
 
 type UseSubscribeParams = {
 	subscribe: Subscribe;
+	validation: (params: SubscribeParams) => IDefaultError;
 };
 
-export function useSubscribe(params: UseSubscribeParams) {
-	const { subscribe } = params;
-	const [email, setEmail] = useState("");
+type UseSubscribeReturn = {
+	email: Email;
+	userHasAcceptedSendingEmails: boolean;
+	handleEmailChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleSendingEmailsChange: () => void;
+	handleSubscribe: () => Promise<void>;
+};
+
+const DEFAULT_ERROR_MESSAGE = "Por favor, digite um valor válido";
+
+export function useSubscribe(params: UseSubscribeParams): UseSubscribeReturn {
+	const { subscribe, validation } = params;
+	const [email, setEmail] = useState<Email>({ value: "", errorMessage: null });
 	const [userHasAcceptedSendingEmails, setUserHasAcceptedSendingEmails] =
 		useState(false);
 
@@ -15,15 +34,17 @@ export function useSubscribe(params: UseSubscribeParams) {
 		setUserHasAcceptedSendingEmails((prevState) => !prevState);
 
 	const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) =>
-		setEmail(e.target.value);
+		setEmail({ value: e.target.value, errorMessage: null });
 
-	const handleSubmit = async (e: FormEvent) => {
-		e.preventDefault();
-		try {
-			const response = await subscribe.execute({ email });
-		} catch (err) {
-			console.error(err);
+	const handleSubscribe = async () => {
+		const validated = validation({ email: email.value });
+		if (validated.hasError) {
+			return setEmail((prevState) => ({
+				...prevState,
+				errorMessage: validated.message || DEFAULT_ERROR_MESSAGE,
+			}));
 		}
+		await subscribe.execute({ email: email.value });
 	};
 
 	return {
@@ -31,6 +52,6 @@ export function useSubscribe(params: UseSubscribeParams) {
 		userHasAcceptedSendingEmails,
 		handleEmailChange,
 		handleSendingEmailsChange,
-		handleSubmit,
+		handleSubscribe,
 	};
 }
