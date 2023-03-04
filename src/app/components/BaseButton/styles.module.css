@@ -8,7 +8,7 @@
 	background-color: var(--accent-color);
 }
 
-.button:hover, .button:focus {
+.button:hover {
 	opacity: 0.85;
 }
 
