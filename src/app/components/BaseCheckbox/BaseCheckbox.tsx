@@ -9,7 +9,7 @@ export const BaseCheckbox = (props: BaseCheckboxProps) => {
 	const { labelText, ...rest } = props;
 
 	return (
-		<label>
+		<label className={styles.checkbox__label}>
 			{labelText}
 			<input type="checkbox" {...rest} />
 		</label>
