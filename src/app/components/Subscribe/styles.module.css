@@ -1,0 +1,13 @@
+.subscribe {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.subscribe__footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+}
