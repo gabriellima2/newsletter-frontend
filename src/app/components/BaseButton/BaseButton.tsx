@@ -14,7 +14,7 @@ export const BaseButton = (props: BaseButtonProps) => {
 		<button
 			type="button"
 			{...rest}
-			className={`${mainFont.className} ${rest.className}`}
+			className={`${styles.button} ${mainFont.className} ${rest.className}`}
 		>
 			{children}
 			{leftIcon && React.createElement(leftIcon, null)}

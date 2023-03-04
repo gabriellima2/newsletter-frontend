@@ -1,0 +1,18 @@
+.button {
+	width: 100%;
+	border: none;
+	border-radius: 8px;
+	padding: 12px 8px;
+	font-weight: 500;
+	cursor: pointer;
+	background-color: var(--accent-color);
+}
+
+.button:hover, .button:focus {
+	opacity: 0.85;
+}
+
+.button:disabled {
+	pointer-events: none;
+	opacity: 0.6;
+}
