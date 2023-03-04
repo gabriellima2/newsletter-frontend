@@ -1,8 +1,9 @@
 import { useSubscribe } from "./hooks/useSubscribe";
 import { makeSubscribe } from "@/main/factories/use-cases/make-subscribe";
-import { BaseField } from "../BaseField/";
+
+import { BaseCheckbox } from "../BaseCheckbox";
 import { BaseButton } from "../BaseButton";
-import { Checkbox } from "../Checkbox";
+import { BaseField } from "../BaseField";
 
 export const Subscribe = () => {
 	const {
@@ -26,7 +27,7 @@ export const Subscribe = () => {
 					labelText="Email *"
 					errorMessage={null}
 				/>
-				<Checkbox
+				<BaseCheckbox
 					labelText="Eu aceito receber emails diariamente"
 					checked={userHasAcceptedSendingEmails}
 					onChange={handleSendingEmailsChange}

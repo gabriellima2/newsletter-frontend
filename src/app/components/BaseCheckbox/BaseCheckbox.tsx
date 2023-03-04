@@ -1,10 +1,11 @@
 import { InputHTMLAttributes } from "react";
+import styles from "./styles.module.css";
 
-type CheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type"> & {
+type BaseCheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type"> & {
 	labelText?: string;
 };
 
-export const Checkbox = (props: CheckboxProps) => {
+export const BaseCheckbox = (props: BaseCheckboxProps) => {
 	const { labelText, ...rest } = props;
 
 	return (

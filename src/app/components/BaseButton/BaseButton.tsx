@@ -1,5 +1,7 @@
 import React, { ButtonHTMLAttributes } from "react";
-import { mainFont } from "../layout";
+
+import { mainFont } from "../../layout";
+import styles from "./styles.module.css";
 
 type BaseButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	leftIcon?: () => JSX.Element;
