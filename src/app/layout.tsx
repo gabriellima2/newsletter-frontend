@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Providers } from "./contexts/Providers";
 
 export const mainFont = Inter({ subsets: ["latin"], variable: "--main-font" });
 
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="pt-br">
-			<body className={`${mainFont.className}`}>{children}</body>
+			<body className={`${mainFont.className}`}>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	);
 }
