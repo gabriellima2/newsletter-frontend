@@ -29,7 +29,7 @@ export const Subscribe = () => {
 			className={styles.subscribe}
 		>
 			<BaseField
-				type="text"
+				type="email"
 				placeholder="Digite seu melhor email"
 				value={email.value}
 				onChange={handleEmailChange}
