@@ -6,9 +6,9 @@ import { IDefaultError } from "@/domain/errors";
 const userSchema = z.object({
 	email: z
 		.string()
-		.email({ message: "E-mail inválido!" })
+		.email({ message: "Por favor, digite um e-mail válido" })
 		.trim()
-		.max(256, { message: "O e-mail ultrapassou o limite de 256 caracteres!" }),
+		.max(256, { message: "O e-mail ultrapassou o limite de 256 caracteres" }),
 });
 
 export function subscribeValidation({ email }: SubscribeParams): IDefaultError {
