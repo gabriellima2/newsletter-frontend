@@ -7,6 +7,7 @@ export interface HttpClientRequest {
 
 export interface HttpClientResponse<Body> {
 	statusCode: number;
+	ok: boolean;
 	body: Body;
 }
 

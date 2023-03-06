@@ -1,5 +1,6 @@
 import { IHttpClient, HttpClientResponse } from "@/domain/http";
 import { SubscribeParams, UserEntity } from "@/domain/entities";
+import { IDefaultError } from "@/domain/errors";
 import { Subscribe } from "../subscribe";
 
 export class SubscribeImpl implements Subscribe {
@@ -11,7 +12,7 @@ export class SubscribeImpl implements Subscribe {
 	async execute(
 		params: SubscribeParams
 	): Promise<HttpClientResponse<UserEntity>> {
-		return await this.httpClient.execute({
+		const response = await this.httpClient.execute<UserEntity | IDefaultError>({
 			url: this.url,
 			method: "post",
 			headers: {
@@ -20,5 +21,9 @@ export class SubscribeImpl implements Subscribe {
 			},
 			body: JSON.stringify(params),
 		});
+		const hasErrorMessage = (response.body as IDefaultError).message;
+		if (!response.ok && hasErrorMessage) throw new Error(hasErrorMessage);
+		if (!response.ok) throw new Error("Ocorreu um erro, tente novamente!");
+		return response as HttpClientResponse<UserEntity>;
 	}
 }

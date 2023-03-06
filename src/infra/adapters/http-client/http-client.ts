@@ -13,9 +13,7 @@ export class HttpClient implements IHttpClient {
 			headers: request.headers as HeadersInit,
 			body: request.body as BodyInit,
 		});
-		if (!response.ok) throw new Error();
-
 		const data: BodyResponse = await response.json();
-		return { body: data, statusCode: response.status };
+		return { body: data, statusCode: response.status, ok: response.ok };
 	}
 }
