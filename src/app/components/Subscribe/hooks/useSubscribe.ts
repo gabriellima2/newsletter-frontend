@@ -19,7 +19,7 @@ type UseSubscribeReturn = {
 	userHasAcceptedSendingEmails: boolean;
 	handleEmailChange: (e: ChangeEvent<HTMLInputElement>) => void;
 	handleSendingEmailsChange: () => void;
-	handleSubscribe: () => Promise<void>;
+	handleSubscribe: () => Promise<string | null>;
 };
 
 const DEFAULT_ERROR_MESSAGE = "Por favor, digite um valor válido";
@@ -39,12 +39,14 @@ export function useSubscribe(params: UseSubscribeParams): UseSubscribeReturn {
 	const handleSubscribe = async () => {
 		const validated = validation({ email: email.value });
 		if (validated.hasError) {
-			return setEmail((prevState) => ({
+			setEmail((prevState) => ({
 				...prevState,
 				errorMessage: validated.message || DEFAULT_ERROR_MESSAGE,
 			}));
+			return null;
 		}
-		await subscribe.execute({ email: email.value });
+		const response = await subscribe.execute({ email: email.value });
+		return `${response.body.email} inscrito com sucesso!`;
 	};
 
 	return {
